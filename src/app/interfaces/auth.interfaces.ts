@@ -22,3 +22,8 @@ export interface User {
   isActive: boolean;
   roleUser: string;
 }
+
+export interface ResponseValidToken {
+  ok: boolean;
+  newToken: string;
+}

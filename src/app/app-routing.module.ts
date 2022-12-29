@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidaAccessGuard } from './guard/valida-access.guard';
 
 const routes: Routes = [
   {
@@ -10,11 +11,13 @@ const routes: Routes = [
     path: 'school',
     loadChildren: () =>
       import('./pages/school/school.module').then((m) => m.SchoolModule),
+    canActivate: [ValidaAccessGuard],
   },
   {
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then((m) => m.HomeModule),
+    canActivate: [ValidaAccessGuard],
   },
   {
     path: '**',

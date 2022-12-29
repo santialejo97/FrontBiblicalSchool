@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import {
   RequestLogin,
   ResponseAuth,
+  ResponseValidToken,
   User,
 } from '../interfaces/auth.interfaces';
-import { Observable, catchError, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -36,5 +37,20 @@ export class AuthService {
         this.user = user;
       })
     );
+  }
+
+  register() {}
+
+  validToken(): Observable<boolean> {
+    return this.http
+      .get<ResponseValidToken>(
+        `${this.url}/validaccess/valid?token=${this.getToken}`
+      )
+      .pipe(
+        tap(({ newToken }) => {
+          this.setToken(newToken);
+        }),
+        catchError(({ ok }) => of(ok))
+      );
   }
 }
