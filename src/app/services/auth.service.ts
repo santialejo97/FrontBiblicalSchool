@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   RequestLogin,
+  RequestRegister,
   ResponseAuth,
   ResponseValidToken,
   User,
@@ -39,7 +40,14 @@ export class AuthService {
     );
   }
 
-  register() {}
+  register(data: RequestRegister): Observable<ResponseAuth> {
+    return this.http.post<ResponseAuth>('', data).pipe(
+      tap(({ token, ok, user }) => {
+        if (ok) this.setToken(token);
+        this.user = user;
+      })
+    );
+  }
 
   validToken(): Observable<boolean> {
     return this.http

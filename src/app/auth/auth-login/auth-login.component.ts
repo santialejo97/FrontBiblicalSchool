@@ -42,7 +42,7 @@ export class AuthLoginComponent implements OnInit {
     private authServices: AuthService,
     private router: Router
   ) {
-    this.formLogin = fb.group({
+    this.formLogin = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
     });
@@ -54,5 +54,14 @@ export class AuthLoginComponent implements OnInit {
 
   login() {
     this.authServices.login(this.formLogin.value).subscribe(this.observer);
+  }
+
+  getCampoValid(campo: string): boolean {
+    if (
+      this.formLogin.get(campo)?.invalid &&
+      this.formLogin.get(campo)?.touched
+    )
+      return true;
+    return false;
   }
 }

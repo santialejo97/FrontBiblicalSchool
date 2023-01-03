@@ -15,6 +15,13 @@
             placeholder="Ingresar email"
           />
         </div>
+        <div
+          class="alert alert-warning col"
+          role="alert"
+          *ngIf="this.getCampoValid('email')"
+        >
+          <label>Este campo no es valido</label>
+        </div>
         <div class="input-group mb-3">
           <label for="password" class="input-group-text">Password</label>
           <input
@@ -25,7 +32,14 @@
             placeholder="Ingresar password"
           />
         </div>
-        <button class="btn btn-primary p-2">Login</button>
+        <div
+          class="alert alert-warning col"
+          role="alert"
+          *ngIf="this.getCampoValid('password')"
+        >
+          <label>Este campo no es valido</label>
+        </div>
+        <button class="btn btn-primary p-2 mt-3">Login</button>
       </form>
     </div>
   </div>

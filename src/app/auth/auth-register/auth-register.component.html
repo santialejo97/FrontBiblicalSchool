@@ -1,1 +1,65 @@
-<p>auth-register works!</p>
+<div>
+  <div class="row text-center m-5">
+    <div class="col-6 mt-5 mb-5">
+      <h2>Registro</h2>
+    </div>
+    <div class="col-12">
+      <form (submit)="register()" [formGroup]="this.formRegister">
+        <div class="input-group mb-3">
+          <label for="email" class="input-group-text">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Ingresar email"
+          />
+        </div>
+        <div
+          class="alert alert-warning col"
+          role="alert"
+          *ngIf="this.getCampoValid('password')"
+        >
+          <label>Este campo no es valido</label>
+        </div>
+        <div class="input-group mb-3">
+          <label for="name" class="input-group-text">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            placeholder="Ingresar nombre completo"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <label for="password" class="input-group-text">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Ingresar password"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <label for="confirmar" class="input-group-text"
+            >Confirmar Password</label
+          >
+          <input
+            type="password"
+            id="confirmar"
+            class="form-control"
+            formControlName="confirmar"
+            placeholder="Confirme la password"
+          />
+        </div>
+
+        <button class="btn btn-primary p-2">Registro</button>
+      </form>
+      <h5 class="mt-3">
+        <a routerLink="auth/login"> ¿ Ya tienes una cuenta registrada ?</a>
+      </h5>
+    </div>
+  </div>
+</div>
