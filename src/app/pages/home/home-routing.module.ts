@@ -8,6 +8,11 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
+    path: 'school',
+    loadChildren: () =>
+      import('../school/school.module').then((m) => m.SchoolModule),
+  },
+  {
     path: '**',
     redirectTo: 'init',
   },

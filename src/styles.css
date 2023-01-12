@@ -12,3 +12,25 @@ img {
   width: 150px;
   height: 70px;
 }
+
+.defauld {
+  margin: 0;
+}
+
+.defauld h1 {
+  font-size: 20px;
+}
+.defauld img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 1px 0px 5px black;
+}
+
+.search {
+  display: flex;
+}
